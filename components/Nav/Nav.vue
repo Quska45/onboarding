@@ -2,31 +2,40 @@
   <div class="sidebar-page">
     <section class="sidebar-layout">
       <b-sidebar
-        :mobile="mobile"
-        :reduce="reduce"
         open
         :fullheight=true
       >
         <div class="p-1">
           <div class="block">
             <img
-              src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png"
+              src="../../../VUETALK/public/sehyunict_CI_72.png"
               alt="Lightweight UI components for Vue.js based on Bulma"
             />
           </div>
         </div>
+
+        <MenuDropDown v-for="menu in menus" :key="menu.name" :name="menu.name" :isActive="menu.isActive">
+        </MenuDropDown>
+
       </b-sidebar>
     </section>
   </div>
 </template>
 <script>
+import MenuDropDown from "./MenuDropDown";
 
 export default {
     name: 'Nav',
+    components:{
+      MenuDropDown
+    },
     data() {
       return {
+        menus: this.$store.state.menus.titles
       };
     },
+    methods:{
+    }
 }
 </script>
 <style lang="scss">
@@ -66,6 +75,9 @@ a {
       min-height: 100%;
       // min-height: 100vh;
     }
+  }
+  .sidebar-content {
+    overflow-y: hidden!important;
   }
   @media screen and (max-width: 1023px) {
     .b-sidebar {

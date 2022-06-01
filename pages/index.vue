@@ -1,6 +1,5 @@
 <template>
-  <div class="container is-fluid">
-  </div>
+
 </template>
 
 <script>
