@@ -2,33 +2,19 @@
   <div class="dropdown-box">
     <span class="tag is-black">{{ name }}</span>
     <div :class="`dropdown ${ isActive }`">
-      <div class="dropdown-trigger" @click="addActiveClassToMenuByName( name )">
-        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" >
-          <span>Dropdown button</span>
-          <span class="icon is-small">
+      <div class="dropdown-trigger" @click="addActiveClassToUserByName( name )">
+        <button class="button user-content-button" aria-haspopup="true" aria-controls="dropdown-menu" >
+          <span>{{ activeUserContent }}</span>
+          <span class="icon is-small user-content-i">
           <i class="mdi mdi-arrow-down-bold" aria-hidden="true"></i>
         </span>
         </button>
       </div>
       <div class="dropdown-menu" id="dropdown-menu" role="menu">
         <div class="dropdown-content">
-          <a href="#" class="dropdown-item">
-            Dropdown item
-          </a>
-          <a class="dropdown-item">
-            Other dropdown item
-          </a>
-          <a href="#" class="dropdown-item is-active">
-            Active dropdown item
-          </a>
-          <a href="#" class="dropdown-item">
-            Other dropdown item
-          </a>
-          <hr class="dropdown-divider">
-          <a href="#" class="dropdown-item">
-            With a divider
-          </a>
-          <MenuDropDownItem></MenuDropDownItem>
+<!--          <hr class="dropdown-divider"> //구분선-->
+          <MenuDropDownItem v-for="userContent in userContents" :key="userContent.name" :userContent="userContent.name" :isActive="userContent.isActive"></MenuDropDownItem>
+
         </div>
       </div>
     </div>
@@ -46,7 +32,8 @@ export default {
   },
   data: function(){
     return {
-
+      userContents: [],
+      activeUserContent: ''
     }
   },
   props: {
@@ -61,18 +48,31 @@ export default {
   },
   methods: {
     ...mapMutations({
-      initMenus: 'menus/initMenus',
-      addActiveClassToMenuByName: 'menus/addActiveClassToMenuByName',
-    })
+      initUsers: 'users/initUsers',
+      addActiveClassToUserByName: 'users/addActiveClassToUserByName',
+      initUserContents: 'userContents/initUserContents'
+    }),
+    async _initUserContents(){
+      let userContents = await this.$axios.$get( '/api/filePath/userContents' + '/' + this.name );
+      this.$store.commit( 'userContents/initUserContents', userContents )
+      this.userContents = this.$store.state.userContents.userContents;
+      this.activeUserContent = 'Select';
+    }
   },
-  mounted() {
-    this.$store.commit( 'menus/initMenus' )
-    // this.initMenus();
+  created() {
+    this._initUserContents();
   }
 }
 </script>
 
 <style lang="scss">
+  .user-content-i {
+    position: absolute;
+    right: 10px;
+  }
+  .user-content-button {
+    width: 175px;
+  }
   .tag {
     width: 70px;
     height: 38px!important;

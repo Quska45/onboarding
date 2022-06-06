@@ -14,7 +14,7 @@
           </div>
         </div>
 
-        <MenuDropDown v-for="menu in menus" :key="menu.name" :name="menu.name" :isActive="menu.isActive">
+        <MenuDropDown v-for="user in users" :key="user.name" :name="user.name" :isActive="user.isActive">
         </MenuDropDown>
 
       </b-sidebar>
@@ -22,6 +22,7 @@
   </div>
 </template>
 <script>
+import { mapMutations } from 'vuex';
 import MenuDropDown from "./MenuDropDown";
 
 export default {
@@ -31,10 +32,21 @@ export default {
     },
     data() {
       return {
-        menus: this.$store.state.menus.users
+        users: {}
       };
     },
     methods:{
+      ...mapMutations({
+        initUsers: 'users/initUsers'
+      }),
+      async _initUsers(){
+        let users = await this.$axios.$get( '/api/filePath/users' );
+        this.$store.commit( 'users/initUsers', users )
+        this.users = this.$store.state.users.users;
+      }
+    },
+    created() {
+      this._initUsers();
     }
 }
 </script>
