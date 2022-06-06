@@ -7,10 +7,10 @@
       >
         <div class="p-1">
           <div class="block">
-            <img
-              src="../../../VUETALK/public/sehyunict_CI_72.png"
-              alt="Lightweight UI components for Vue.js based on Bulma"
-            />
+<!--            <img-->
+<!--              src="../../../VUETALK/public/sehyunict_CI_72.png"-->
+<!--              alt="Lightweight UI components for Vue.js based on Bulma"-->
+<!--            />-->
           </div>
         </div>
 
@@ -31,7 +31,7 @@ export default {
     },
     data() {
       return {
-        menus: this.$store.state.menus.titles
+        menus: this.$store.state.menus.users
       };
     },
     methods:{

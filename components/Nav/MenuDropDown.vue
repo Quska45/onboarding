@@ -2,7 +2,7 @@
   <div class="dropdown-box">
     <span class="tag is-black">{{ name }}</span>
     <div :class="`dropdown ${ isActive }`">
-      <div class="dropdown-trigger" @click="activeMenuByName( name )">
+      <div class="dropdown-trigger" @click="addActiveClassToMenuByName( name )">
         <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" >
           <span>Dropdown button</span>
           <span class="icon is-small">
@@ -28,6 +28,7 @@
           <a href="#" class="dropdown-item">
             With a divider
           </a>
+          <MenuDropDownItem></MenuDropDownItem>
         </div>
       </div>
     </div>
@@ -36,11 +37,16 @@
 
 <script>
 import { mapMutations } from 'vuex';
+import MenuDropDownItem from "./MenuDropDownItem";
 
 export default {
   name: "MenuDropDown",
+  components: {
+    MenuDropDownItem
+  },
   data: function(){
     return {
+
     }
   },
   props: {
@@ -55,8 +61,13 @@ export default {
   },
   methods: {
     ...mapMutations({
-      activeMenuByName: 'menus/activeMenuByName',
+      initMenus: 'menus/initMenus',
+      addActiveClassToMenuByName: 'menus/addActiveClassToMenuByName',
     })
+  },
+  mounted() {
+    this.$store.commit( 'menus/initMenus' )
+    // this.initMenus();
   }
 }
 </script>
@@ -66,6 +77,7 @@ export default {
     width: 70px;
     height: 38px!important;
     margin-top: 1px;
+    margin-left: 5px;
   }
   .dropdown-box {
     margin-top: 3px;
