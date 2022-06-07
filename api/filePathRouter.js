@@ -3,7 +3,7 @@ import fs from 'fs';
 import * as path from "path";
 
 const router = Router();
-let filePath = path.join( __dirname, '../components/contents' );
+let filePath = path.join( __dirname, '../pages/contents' );
 
 router.use('/users', (req, res) => {
   let fileNames = fs.readdirSync( filePath );
@@ -19,16 +19,18 @@ router.use('/users', (req, res) => {
 });
 
 router.use('/userContents/:userName', (req, res) => {
-  let fileNames = fs.readdirSync( filePath + '/' +req.params.userName  );
+  let componentsInfo = require( filePath + `/${req.params.userName}/componentMapper.js` )[ 'default' ];
+  let componentsInfoKeys = Object.keys(componentsInfo);
 
-  let userContents = fileNames.reduce(function ( acc, cur, i ) {
-    let fileNameArr = cur.split( '.' );
+  let userContents = componentsInfoKeys.reduce(function ( acc, cur, i ) {
     acc.push({
-      name: fileNameArr[0],
+      name: cur,
+      componentName: componentsInfo[ cur ][ 'componentName' ],
       isActive: ''
     });
+
     return acc;
-  }, [{name: 'Select', isActive: 'is-active'}]);
+  }, [{name: 'Select', componentName: '', isActive: 'is-active'}]);
 
   res.send( userContents )
 });

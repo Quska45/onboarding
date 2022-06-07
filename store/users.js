@@ -10,14 +10,15 @@ export const mutations = {
     state.users = users;
   },
   // 메뉴에 active css 제거
-  removeActiveClassToUsers(){
-  this.state.users.forEach(function( title ){
-    title.isActive = ''
-  });
-},
-// 메뉴에 active css 추가
-addActiveClassToUserByName( state, name ){
-    console.log(name);
+  removeActiveClassToUsers( state ){
+    console.log('삭제함?');
+    state.users.forEach(function( user ){
+      user.isActive = '';
+      activeUser = {};
+    });
+  },
+  // 메뉴에 active css 추가
+  addActiveClassToUserByName( state, name ){
     let title = state.users.reduce(function( acc, cur ){
       if( cur.name == name ){
         acc = cur;

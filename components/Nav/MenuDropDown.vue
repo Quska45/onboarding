@@ -13,7 +13,7 @@
       <div class="dropdown-menu" id="dropdown-menu" role="menu">
         <div class="dropdown-content">
 <!--          <hr class="dropdown-divider"> //구분선-->
-          <MenuDropDownItem v-for="userContent in userContents" :key="userContent.name" :userContent="userContent.name" :isActive="userContent.isActive"></MenuDropDownItem>
+          <MenuDropDownItem v-for="userContent in userContents" :key="userContent.name" :userContent="userContent.name" :isActive="userContent.isActive" :user="name" :userContentComponentName="userContent.componentName" @getUserContent="getUserContent"></MenuDropDownItem>
 
         </div>
       </div>
@@ -50,13 +50,17 @@ export default {
     ...mapMutations({
       initUsers: 'users/initUsers',
       addActiveClassToUserByName: 'users/addActiveClassToUserByName',
-      initUserContents: 'userContents/initUserContents'
+      removeActiveClassToUsers: 'users/removeActiveClassToUsers'
     }),
     async _initUserContents(){
       let userContents = await this.$axios.$get( '/api/filePath/userContents' + '/' + this.name );
       this.$store.commit( 'userContents/initUserContents', userContents )
       this.userContents = this.$store.state.userContents.userContents;
       this.activeUserContent = 'Select';
+    },
+    getUserContent( param ){
+      this.activeUserContent = param;
+      this.$store.commit('userContents/addActiveClassToUserContentByName', param);
     }
   },
   created() {
