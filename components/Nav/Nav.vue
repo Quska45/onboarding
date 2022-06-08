@@ -1,16 +1,17 @@
 <template>
   <div class="sidebar-page">
+    <button class="button sidebar-show-button" @click="open = true">show</button>
     <section class="sidebar-layout">
       <b-sidebar
-        open
-        :fullheight=true
+        v-model="open"
       >
+        <button class="button sidebar-hide-button" @click="open = false">hide</button>
         <div class="p-1">
           <div class="block">
-<!--            <img-->
-<!--              src="../../../VUETALK/public/sehyunict_CI_72.png"-->
-<!--              alt="Lightweight UI components for Vue.js based on Bulma"-->
-<!--            />-->
+            <img
+              src="../../../VUETALK/public/sehyunict_CI_72.png"
+              alt="Lightweight UI components for Vue.js based on Bulma"
+            />
           </div>
         </div>
 
@@ -32,7 +33,8 @@ export default {
     },
     data() {
       return {
-        users: {}
+        users: {},
+        open: false
       };
     },
     methods:{
@@ -57,108 +59,16 @@ a {
 .p-1 {
   padding: 1em;
 }
-.sidebar-page {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  min-height: 100%;
-  height: 100%;
-// min-height: 100vh;
-  .sidebar-layout {
-    display: flex;
-    flex-direction: row;
-    min-height: 100%;
-  // min-height: 100vh;
-  }
+.sidebar-content {
+  position: absolute!important;
+  height: 960px!important;
 }
-@media screen and (max-width: 1023px) {
-  .p-1 {
-    padding: 1em;
-  }
-  .sidebar-page {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    min-height: 100%;
-    // min-height: 100vh;
-    .sidebar-layout {
-      display: flex;
-      flex-direction: row;
-      min-height: 100%;
-      // min-height: 100vh;
-    }
-  }
-  .sidebar-content {
-    overflow-y: hidden!important;
-  }
-  @media screen and (max-width: 1023px) {
-    .b-sidebar {
-      .sidebar-content {
-        &.is-mini-mobile {
-          &:not(.is-mini-expand),
-          &.is-mini-expand:not(:hover):not(.is-mini-delayed) {
-            .menu-list {
-              li {
-                a {
-                  span:nth-child(2) {
-                    display: none;
-                  }
-                }
-                ul {
-                  padding-left: 0;
-                  li {
-                    a {
-                      display: inline-block;
-                    }
-                  }
-                }
-              }
-            }
-            .menu-label:not(:last-child) {
-              margin-bottom: 0;
-            }
-          }
-        }
-      }
-    }
-  }
-  @media screen and (min-width: 1024px) {
-    .b-sidebar {
-      .sidebar-content {
-        &.is-mini {
-          &:not(.is-mini-expand),
-          &.is-mini-expand:not(:hover):not(.is-mini-delayed) {
-            .menu-list {
-              li {
-                a {
-                  span:nth-child(2) {
-                    display: none;
-                  }
-                }
-                ul {
-                  padding-left: 0;
-                  li {
-                    a {
-                      display: inline-block;
-                    }
-                  }
-                }
-              }
-            }
-            .menu-label:not(:last-child) {
-              margin-bottom: 0;
-            }
-          }
-        }
-      }
-    }
-  }
-  .is-mini-expand {
-    .menu-list a {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  }
+.sidebar-show-button {
+  position: absolute;
+  left: 0px;
+}
+.sidebar-hide-button {
+  position: absolute;
+  left: 260px;
 }
 </style>
