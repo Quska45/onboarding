@@ -1,7 +1,7 @@
 <template>
   <div id="layout-container">
-    다시 frommaster 변경
-    frommaster 변경함 다시 변경
+    nav 충돌
+    frommaster 변경함 nav에서 충돌만듦
     <Nav></Nav>
     <nuxt></nuxt>
   </div>
