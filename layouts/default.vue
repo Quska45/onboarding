@@ -2,6 +2,9 @@
   <div id="layout-container">
     다시 frommaster 변경
     frommaster 변경함 다시 변경
+=======
+    frommaster 변경함 nav에서 충돌만듦
+>>>>>>> a58c8a5b12470d13f900c729717ae41f13b1f896
     <Nav></Nav>
     <nuxt></nuxt>
   </div>
