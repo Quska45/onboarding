@@ -1,6 +1,6 @@
 <template>
   <div id="layout-container">
-    merge test
+    merge test test
     <Nav></Nav>
     <nuxt></nuxt>
   </div>
