@@ -1,6 +1,6 @@
 <template>
   <div id="layout-container">
-    frommaster 변경함
+    frommaster 변경함 다시 변경
     <Nav></Nav>
     <nuxt></nuxt>
   </div>
