@@ -1,6 +1,6 @@
 <template>
   <div class="layout-index">
-    contents입니다.
+    변광진 contents입니다.
   </div>
 </template>
 
@@ -11,9 +11,5 @@ export default {
 </script>
 
 <style lang="scss">
-  .layout-index {
-    margin-left: 260px;
-    position: absolute;
-    top: 0px;
-  }
+
 </style>

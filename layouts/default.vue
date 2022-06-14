@@ -1,5 +1,6 @@
 <template>
   <div id="layout-container">
+    merge test
     <Nav></Nav>
     <nuxt></nuxt>
   </div>
@@ -16,9 +17,22 @@ export default {
 </script>
 
 <style>
-  html,body, #__nuxt, #__layout, #layout-container{
+  #__layout{
+    width: calc(100% - 260px)!important;
     height:100%!important;
-    width: 100%!important;
+  }
+  #layout-container{
+  }
+  html,body,#__nuxt {
+    width: 1280px!important;
+    height:960px!important;
+    overflow: auto!important;
+  }
+  .layout-index {
+    position: absolute;
+    top: 0px;
+    margin-top: 50px;
+    margin-left: 50px;
   }
 </style>
 

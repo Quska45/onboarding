@@ -1,7 +1,6 @@
 <template>
   <div class="layout-index">
-    세현 onboarding 시스템 입니다.
-    신입직원들의 회사에 잘 적응 할 수 있도록 많은 격려 부탁드립니다.
+    변광진 소개 페이지 입니다.
   </div>
 </template>
 
