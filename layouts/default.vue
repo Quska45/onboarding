@@ -1,6 +1,6 @@
 <template>
   <div id="layout-container">
-    merge test test
+    frommaster 변경함
     <Nav></Nav>
     <nuxt></nuxt>
   </div>
