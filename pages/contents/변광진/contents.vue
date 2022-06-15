@@ -3,7 +3,7 @@
     변광진 contents입니다.
 <!--    <section class='comments' aria-labelledby="comment">-->
 <!--      <h2 id="comment">Comments</h2>-->
-      <disqus shortname='test.quska' />
+      <disqus shortname='test-quska' />
 <!--    </section>-->
   </div>
 </template>

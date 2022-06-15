@@ -32,6 +32,7 @@ export default {
     margin-top: 50px;
     margin-left: 50px;
     margin-right: 50px;
+    width: calc(100% - 100px)
   }
 </style>
 
