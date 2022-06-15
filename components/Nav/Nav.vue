@@ -61,7 +61,7 @@ a {
 }
 .sidebar-content {
   position: absolute!important;
-  height: 960px!important;
+  //height: 960px!important;
 }
 .sidebar-show-button {
   position: absolute;

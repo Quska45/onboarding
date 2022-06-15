@@ -1,7 +1,5 @@
 <template>
   <div id="layout-container">
-    nav 충돌
-    frommaster 변경함 nav에서 충돌만듦
     <Nav></Nav>
     <nuxt></nuxt>
   </div>
@@ -19,21 +17,21 @@ export default {
 
 <style>
   #__layout{
-    width: calc(100% - 260px)!important;
-    height:100%!important;
+    /*width: calc(100% - 260px)!important;*/
+    /*height:100%!important;*/
   }
   #layout-container{
   }
-  html,body,#__nuxt {
-    width: 1280px!important;
-    height:960px!important;
-    overflow: auto!important;
+  html,body {
+    margin: 0;
+    padding: 0;
   }
   .layout-index {
     position: absolute;
     top: 0px;
     margin-top: 50px;
     margin-left: 50px;
+    margin-right: 50px;
   }
 </style>
 
