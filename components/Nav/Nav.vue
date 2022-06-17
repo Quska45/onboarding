@@ -1,11 +1,11 @@
 <template>
   <div class="sidebar-page">
-    <button class="button sidebar-show-button" @click="open = true">show</button>
+    <button class="button sidebar-show-button" @click="openNav">show</button>
     <section class="sidebar-layout">
       <b-sidebar
         v-model="open"
       >
-        <button class="button sidebar-hide-button" @click="open = false">hide</button>
+        <button class="button sidebar-hide-button" @click="closeNav">hide</button>
         <div class="p-1">
           <div class="block">
             <img
@@ -15,7 +15,7 @@
           </div>
         </div>
 
-        <MenuDropDown v-for="user in users" :key="user.name" :name="user.name" :isActive="user.isActive">
+        <MenuDropDown v-for="user in users" :key="user.name" :name="user.name" :isActive="user.isActive" @openNav="openNav" @closeNav="closeNav">
         </MenuDropDown>
 
       </b-sidebar>
@@ -39,12 +39,18 @@ export default {
     },
     methods:{
       ...mapMutations({
-        initUsers: 'users/initUsers'
+        initUsers: 'users/initUsers',
       }),
       async _initUsers(){
         let users = await this.$axios.$get( '/api/filePath/users' );
         this.$store.commit( 'users/initUsers', users )
         this.users = this.$store.state.users.users;
+      },
+      openNav(){
+        this.open = true;
+      },
+      closeNav(){
+        this.open = false;
       }
     },
     created() {

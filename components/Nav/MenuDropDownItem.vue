@@ -1,5 +1,5 @@
 <template>
-  <div @click="removeActiveClassToUsers(), getUserContent()">
+  <div @click="removeActiveClassToUsers(), getUserContent(), closeNav()">
     <nuxt-link :class="`dropdown-item ${ isActive }`" :to="`/contents/${this.user}/${this.userContentComponentName}`">
       {{ userContent }}
     </nuxt-link>
@@ -17,10 +17,13 @@ export default {
   },
   methods: {
     ...mapMutations({
-      removeActiveClassToUsers: 'users/removeActiveClassToUsers'
+      removeActiveClassToUsers: 'users/removeActiveClassToUsers',
     }),
     getUserContent() {
-      this.$emit('getUserContent', this.userContent)
+      this.$emit('getUserContent', this.userContent);
+    },
+    closeNav(){
+      this.$emit('closeNav');
     }
   },
   props: {

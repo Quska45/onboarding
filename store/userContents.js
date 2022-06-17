@@ -1,5 +1,6 @@
 export const state = () => ({
-  userContents: []
+  userContents: [],
+  activeUserContent: ''
 });
 
 export const mutations = {
@@ -10,5 +11,8 @@ export const mutations = {
     state.userContents.forEach(( userContent )=>{
       userContent.name == name ? userContent.isActive = 'is-active' : userContent.isActive = '';
     });
+  },
+  setActiveUserContent( state, contentName ){
+    state.activeUserContent = contentName;
   }
 };

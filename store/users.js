@@ -1,8 +1,6 @@
-// 현재 active class를 가지고 있는 메뉴
-let activeUser = {};
-
 export const state = () => ({
-  users: []
+  users: [],
+  activeUser: {}
 });
 
 export const mutations = {
@@ -11,10 +9,9 @@ export const mutations = {
   },
   // 메뉴에 active css 제거
   removeActiveClassToUsers( state ){
-    console.log('삭제함?');
     state.users.forEach(function( user ){
       user.isActive = '';
-      activeUser = {};
+      state.activeUser = {};
     });
   },
   // 메뉴에 active css 추가
@@ -26,27 +23,27 @@ export const mutations = {
       return acc;
     }, {});
 
-    if( activeUser.name == name ){
-      activeUser.isActive = '';
-      activeUser = {};
+    if( state.activeUser.name == name ){
+      state.activeUser.isActive = '';
+      state.activeUser = {};
       return false;
     };
 
-    if( !activeUser.name ){
-      activeUser.isActive = '';
-      activeUser = title;
+    if( !state.activeUser.name ){
+      state.activeUser.isActive = '';
+      state.activeUser = title;
       title.isActive = 'is-active';
       return true;
     };
 
-    if( activeUser.name != name ){
-      activeUser.isActive = '';
-      activeUser = title;
+    if( state.activeUser.name != name ){
+      state.activeUser.isActive = '';
+      state.activeUser = title;
       title.isActive = 'is-active';
       return true;
     };
   },
-  getActiveUser(){
-    return activeUser;
+  getActiveUser( state ){
+    return state.activeUser;
   }
 };
