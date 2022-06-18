@@ -87,8 +87,8 @@ export default {
     margin-left: 5px;
   }
   .dropdown-box {
-    margin-top: 3px;
-    margin-bottom: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
   .dropdown-menu {
     min-width: 11rem;

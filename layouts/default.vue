@@ -1,16 +1,19 @@
 <template>
   <div id="layout-container">
     <Nav></Nav>
+    <Header></Header>
     <nuxt></nuxt>
   </div>
 </template>
 
 <script>
 import Nav from "../components/Nav/Nav";
+import Header from "../components/Header/Header";
 
 export default {
   components: {
-    Nav
+    Nav,
+    Header
   }
 }
 </script>
@@ -29,10 +32,10 @@ export default {
   .layout-index {
     position: absolute;
     top: 0px;
-    margin-top: 50px;
-    margin-left: 50px;
-    margin-right: 50px;
-    width: calc(100% - 100px)
+    margin-top: 100px;
+    margin-left: 150px;
+    margin-right: 150px;
+    width: calc(100% - 300px);
   }
 </style>
 
