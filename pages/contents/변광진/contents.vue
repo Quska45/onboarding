@@ -1,6 +1,7 @@
 <template>
   <div class="layout-index">
     변광진 contents입니다.
+    <Header></Header>
     <disqus shortname='test-quska' />
   </div>
 </template>

@@ -1,7 +1,6 @@
 <template>
   <div id="layout-container">
     <Nav></Nav>
-    <Header></Header>
     <nuxt></nuxt>
   </div>
 </template>
@@ -32,10 +31,11 @@ export default {
   .layout-index {
     position: absolute;
     top: 0px;
-    margin-top: 100px;
+    /*margin-top: 100px;*/
     margin-left: 310px;
     margin-right: 50px;
     width: calc(100% - 360px);
+    padding-top: 100px;
   }
 </style>
 

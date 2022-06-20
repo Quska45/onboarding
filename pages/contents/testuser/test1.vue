@@ -1,5 +1,6 @@
 <template>
   <div class="layout-index">
+    <Header></Header>
     test user test1입니다.
     <disqus shortname='test-quska' />
   </div>
