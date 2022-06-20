@@ -33,9 +33,9 @@ export default {
     position: absolute;
     top: 0px;
     margin-top: 100px;
-    margin-left: 150px;
-    margin-right: 150px;
-    width: calc(100% - 300px);
+    margin-left: 310px;
+    margin-right: 50px;
+    width: calc(100% - 360px);
   }
 </style>
 

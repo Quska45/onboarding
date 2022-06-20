@@ -30,8 +30,8 @@ export default {
 <style scoped>
   .box {
     position: fixed;
-    left: 150px;
-    width: calc(100% - 300px);
+    left: 310px;
+    width: calc(100% - 360px);
   }
   .header-tag {
     width: auto;

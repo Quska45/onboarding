@@ -13,7 +13,7 @@
       <div class="dropdown-menu" id="dropdown-menu" role="menu">
         <div class="dropdown-content">
 <!--          <hr class="dropdown-divider"> //구분선-->
-          <MenuDropDownItem v-for="userContent in userContents" :key="userContent.name" :userContent="userContent.name" :isActive="userContent.isActive" :user="name" :userContentComponentName="userContent.componentName" @getUserContent="getUserContent" @closeNav="closeNav"></MenuDropDownItem>
+          <MenuDropDownItem v-for="userContent in userContents" :key="userContent.name" :userContent="userContent.name" :isActive="userContent.isActive" :user="name" :userContentComponentName="userContent.componentName" @getUserContent="getUserContent"></MenuDropDownItem>
 
         </div>
       </div>
@@ -53,18 +53,22 @@ export default {
     }),
     async _initUserContents(){
       let userContents = await this.$axios.$get( '/api/filePath/userContents' + '/' + this.name );
-      this.$store.commit( 'userContents/initUserContents', userContents )
-      this.userContents = this.$store.state.userContents.userContents;
+      this.initUserContents( userContents );
       this.activeUserContent = 'Select';
     },
     getUserContent( contentName ){
       this.setActiveUserContent( contentName );
       this.activeUserContent = contentName;
-      this.$store.commit('userContents/addActiveClassToUserContentByName', contentName);
+      this.addActiveClassToUserContentByName( contentName )
     },
-    closeNav() {
-      this.$emit('closeNav')
-    }
+    addActiveClassToUserContentByName( name ){
+      this.userContents.forEach(( userContent )=>{
+        userContent.name == name ? userContent.isActive = 'is-active' : userContent.isActive = '';
+      });
+    },
+    initUserContents( userContents ){
+      this.userContents = userContents;
+    },
   },
   created() {
     this._initUserContents();

@@ -1,5 +1,5 @@
 export default {
   "test1": {
-    "componentName": "contents"
+    "componentName": "test1"
   }
 }

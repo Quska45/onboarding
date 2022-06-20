@@ -1,5 +1,5 @@
 <template>
-  <div @click="removeActiveClassToUsers(), getUserContent(), closeNav()">
+  <div @click="removeActiveClassToUsers(), getUserContent()">
     <nuxt-link :class="`dropdown-item ${ isActive }`" :to="`/contents/${this.user}/${this.userContentComponentName}`">
       {{ userContent }}
     </nuxt-link>
@@ -21,9 +21,6 @@ export default {
     }),
     getUserContent() {
       this.$emit('getUserContent', this.userContent);
-    },
-    closeNav(){
-      this.$emit('closeNav');
     }
   },
   props: {
