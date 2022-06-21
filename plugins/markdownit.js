@@ -1,3 +1,4 @@
+// deprecate. 그냥 기록용. https://po3rin.com/blog/blog-nuxt
 import MarkdownIt from 'markdown-it'
 
 export default ({ app }, inject) => {

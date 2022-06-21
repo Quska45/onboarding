@@ -21,6 +21,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~css/md.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -41,7 +42,7 @@ export default {
   modules: [
     'nuxt-buefy',
     '@nuxtjs/axios/',
-    // '@nuxtjs/markdownit'
+    '@nuxtjs/markdownit'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -53,10 +54,12 @@ export default {
   ],
 
   markdownit: {
-    injected: true,
+    preset: 'default',
+    linkify: true,
+    breaks: true,
     use: [
-      // 'markdown-it-highlightjs',
-      // 'markdown-it-div'
+      // 'markdown-it-div',
+      // 'markdown-it-attrs'
     ]
   }
 }
