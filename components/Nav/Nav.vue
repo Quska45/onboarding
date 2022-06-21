@@ -3,6 +3,7 @@
     <section class="sidebar-layout">
       <b-sidebar
         open
+        :can-cancel="['x', 'outside']"
       >
         <div class="p-1">
           <div class="block">
