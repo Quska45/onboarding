@@ -53,8 +53,24 @@ export default {
     }),
     async _initUserContents(){
       let userContents = await this.$axios.$get( '/api/filePath/userContents' + '/' + this.name );
-      this.initUserContents( userContents );
-      this.activeUserContent = 'Select';
+      this.userContents = userContents;
+
+      let paths = this.$route.path.split( '/' );
+      let userName = decodeURIComponent( paths[ 2 ] );
+      let userContentName = decodeURIComponent( paths[ 3 ] );
+      userContentName = userContents.reduce(( acc, cur )=>{
+        if( cur.componentName == userContentName ){
+          acc = cur.name;
+        };
+        return acc
+      }, '');
+
+      if( this.name == userName ){
+        this.activeUserContent = userContentName;
+        this.addActiveClassToUserContentByName( userContentName );
+      } else {
+        this.activeUserContent = 'Select';
+      };
     },
     getUserContent( contentName ){
       this.setActiveUserContent( contentName );
@@ -65,9 +81,6 @@ export default {
       this.userContents.forEach(( userContent )=>{
         userContent.name == name ? userContent.isActive = 'is-active' : userContent.isActive = '';
       });
-    },
-    initUserContents( userContents ){
-      this.userContents = userContents;
     },
   },
   created() {
