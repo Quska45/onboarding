@@ -49,7 +49,9 @@ export default {
   methods: {
     ...mapMutations({
       addActiveClassToUserByName: 'users/addActiveClassToUserByName',
-      setActiveUserContent: 'userContents/setActiveUserContent'
+      setActiveUserContent: 'userContents/setActiveUserContent',
+      setActiveUser: 'users/setActiveUser',
+      setActiveUserName: 'users/setActiveUserName'
     }),
     async _initUserContents(){
       let userContents = await this.$axios.$get( '/api/filePath/userContents' + '/' + this.name );
@@ -68,9 +70,12 @@ export default {
       if( this.name == userName ){
         this.activeUserContent = userContentName;
         this.addActiveClassToUserContentByName( userContentName );
+        this.setActiveUserContent( userContentName );
+        this.setActiveUserName( this.name );
       } else {
         this.activeUserContent = 'Select';
       };
+      // this.setActiveUser( this.name );
     },
     getUserContent( contentName ){
       this.setActiveUserContent( contentName );

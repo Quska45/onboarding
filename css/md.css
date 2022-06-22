@@ -31,3 +31,10 @@ h3 {
   margin-right: 0;
   font-weight: bold;
 }
+
+.number {
+  padding: 0px;
+  font-size: 0.92rem;
+  display: inline;
+  background-color: inherit;
+}

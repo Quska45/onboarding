@@ -1,6 +1,7 @@
 export const state = () => ({
   users: [],
-  activeUser: {}
+  activeUser: {},
+  activeUserName: ''
 });
 
 export const mutations = {
@@ -58,5 +59,8 @@ export const mutations = {
     }, {});
 
     state.activeUser = activeUser;
+  },
+  setActiveUserName( state, name ){
+    state.activeUserName = name;
   }
 };

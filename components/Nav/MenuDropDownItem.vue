@@ -18,9 +18,11 @@ export default {
   methods: {
     ...mapMutations({
       removeActiveClassToUsers: 'users/removeActiveClassToUsers',
+      setActiveUser: 'users/setActiveUser'
     }),
     getUserContent() {
       this.$emit('getUserContent', this.userContent);
+      this.setActiveUser( this.user );
     }
   },
   props: {

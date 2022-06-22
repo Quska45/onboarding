@@ -13,6 +13,22 @@ export default {
       user: this.$store.state.users.activeUser.name,
       userContent: this.$store.state.userContents.activeUserContent
     }
+  },
+  computed: {
+    getUser(){
+      return this.$store.state.users.activeUserName;
+    },
+    getUserContent(){
+      return this.$store.state.userContents.activeUserContent;
+    }
+  },
+  watch: {
+    getUser( userName ){
+      this.user = userName;
+    },
+    getUserContent( userContentName ){
+      this.userContent = userContentName;
+    }
   }
 }
 </script>

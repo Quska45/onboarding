@@ -8,7 +8,7 @@
         <div class="p-1">
           <div class="block">
             <img
-              // src="../../../VUETALK/public/sehyunict_CI_72.png"
+              src="../../public/sehyunict_CI_72.png"
               alt="Lightweight UI components for Vue.js based on Bulma"
             />
           </div>
