@@ -1,7 +1,12 @@
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
-
+  vue: {
+    config: {
+      productionTip: true,
+      devtools: 'eval-cheap-module-source-map'
+    }
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'onboarding',
@@ -47,6 +52,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    analyze: true,
   },
 
   serverMiddleware: [
