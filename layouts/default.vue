@@ -11,6 +11,14 @@ import Nav from "../components/Nav/Nav";
 export default {
   components: {
     Nav
+=======
+import User from "../components/js/User";
+
+export default {
+  components: {
+    Nav,
+    Header: User
+>>>>>>> Stashed changes
   }
 }
 </script>
