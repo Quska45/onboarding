@@ -7,23 +7,15 @@
 
 <script>
 import Nav from "../components/Nav/Nav";
-import Header from "../components/Header/Header";
 
 export default {
   components: {
-    Nav,
-    Header
+    Nav
   }
 }
 </script>
 
 <style>
-  #__layout{
-    /*width: calc(100% - 260px)!important;*/
-    /*height:100%!important;*/
-  }
-  #layout-container{
-  }
   html,body {
     margin: 0;
     padding: 0;

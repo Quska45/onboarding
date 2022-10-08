@@ -10,10 +10,6 @@ export const mutations = {
   },
   // 메뉴에 active css 제거
   removeActiveClassToUsers( state ){
-    // state.users.forEach(function( user ){
-    //   user.isActive = '';
-    //   state.activeUser = {};
-    // });
     state.activeUser.isActive = '';
   },
   // 메뉴에 active css 추가
