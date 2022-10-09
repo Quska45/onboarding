@@ -1,56 +1,15 @@
 [
   {
     "name": "testuser",
-    "isActive": "",
-    "componentNames": [
-      {
-        "name": "Select",
-        "componentName": "",
-        "isActive": "is-active"
-      },
-      {
-        "name": "test1",
-        "componentName": "test1",
-        "isActive": ""
-      }
-    ]
+    "isActive": ""
   },
   {
     "name": "testuser2",
-    "isActive": "",
-    "componentNames": [
-      {
-        "name": "Select",
-        "componentName": "",
-        "isActive": "is-active"
-      },
-      {
-        "name": "테스트2",
-        "componentName": "test2",
-        "isActive": ""
-      }
-    ]
+    "isActive": ""
   },
   {
     "name": "변광진",
-    "isActive": "",
-    "componentNames": [
-      {
-        "name": "Select",
-        "componentName": "",
-        "isActive": "is-active"
-      },
-      {
-        "name": "컨텐츠",
-        "componentName": "contents",
-        "isActive": ""
-      },
-      {
-        "name": "개발",
-        "componentName": "development",
-        "isActive": ""
-      }
-    ]
+    "isActive": ""
   }
 ]
 
