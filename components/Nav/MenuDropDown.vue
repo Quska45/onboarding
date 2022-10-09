@@ -24,6 +24,7 @@
 <script>
 import { mapMutations } from 'vuex';
 import MenuDropDownItem from "./MenuDropDownItem";
+import users from "../../pages/users.json";
 
 export default {
   name: "MenuDropDown",
@@ -54,7 +55,7 @@ export default {
       setActiveUserName: 'users/setActiveUserName'
     }),
     async _initUserContents(){
-      let userContents = await this.$axios.$get( '/api/filePath/userContents' + '/' + this.name );
+      let userContents = this.getComponentNamesByUserName( users, this.name );
       this.userContents = userContents;
 
       let paths = this.$route.path.split( '/' );
@@ -87,6 +88,18 @@ export default {
         userContent.name == name ? userContent.isActive = 'is-active' : userContent.isActive = '';
       });
     },
+    getComponentNamesByUserName( users, userName ){
+          console.log(userName);
+      return users.reduce(( acc, cur ) => {
+        let componentNames = null;
+        if( cur.name == userName ){
+          componentNames = cur.componentNames;
+          acc = componentNames;
+        };
+
+        return acc;
+      }, null);
+    }
   },
   created() {
     this._initUserContents();

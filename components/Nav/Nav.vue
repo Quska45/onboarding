@@ -24,6 +24,7 @@
 <script>
 import { mapMutations } from 'vuex';
 import MenuDropDown from "./MenuDropDown";
+import users from "../../pages/users.json";
 
 export default {
     name: 'Nav',
@@ -40,7 +41,6 @@ export default {
         initUsers: 'users/initUsers',
       }),
       async _initUsers(){
-        let users = await this.$axios.$get( '/api/filePath/users' );
         this.$store.commit( 'users/initUsers', users )
         this.users = this.$store.state.users.users;
       }
