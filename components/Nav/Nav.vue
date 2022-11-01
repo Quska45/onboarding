@@ -3,14 +3,15 @@
     <section class="sidebar-layout">
       <b-sidebar
         open
-        :can-cancel="['x', 'outside']"
       >
         <div class="p-1">
           <div class="block">
-            <img
-              src="../../public/sehyunict_CI_72.png"
-              alt="Lightweight UI components for Vue.js based on Bulma"
-            />
+            <nuxt-link to="/">
+              <img
+                src="../../public/sehyunict_CI_72.png"
+                alt="Lightweight UI components for Vue.js based on Bulma"
+              />
+            </nuxt-link>
           </div>
         </div>
 

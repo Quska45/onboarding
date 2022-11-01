@@ -1,8 +1,10 @@
 <template>
-  <div class="layout-index">
-    세현 onboarding 시스템 입니다.
-    신입직원들이 회사에 잘 적응 할 수 있도록 많은 격려 부탁드립니다.
-  </div>
+  <article class="layout-index media">
+    <div class="media-content">
+      신입 직원들이 공부한 내용을 공유하기 위해 만들어진 서비스 입니다.
+    </div>
+
+  </article>
 </template>
 
 <script>
