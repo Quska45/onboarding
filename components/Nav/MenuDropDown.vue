@@ -54,30 +54,33 @@ export default {
       setActiveUser: 'users/setActiveUser',
       setActiveUserName: 'users/setActiveUserName'
     }),
-    async _initUserContents(){
-      // let userContents = await this.$axios.$get( '/api/filePath/userContents' + '/' + this.name );      // userContents = users[ this.name ];
-      let userContents = this.getComponentNamesByUserName( users, this.name );
-      this.userContents = userContents;
+    async _initUserContents( paths ){
+      try {
+        // let userContents = await this.$axios.$get( '/api/filePath/userContents' + '/' + this.name );      // userContents = users[ this.name ];
+        let userContents = this.getComponentNamesByUserName( users, this.name );
+        this.userContents = userContents;
 
-      let paths = this.$route.path.split( '/' );
-      let userName = decodeURIComponent( paths[ 2 ] );
-      let userContentName = decodeURIComponent( paths[ 3 ] );
-      userContentName = userContents.reduce(( acc, cur )=>{
-        if( cur.componentName == userContentName ){
-          acc = cur.name;
+        let userName = decodeURIComponent( paths[ 2 ] );
+        let userContentName = decodeURIComponent( paths[ 3 ] );
+        userContentName = userContents.reduce(( acc, cur )=>{
+          if( cur.componentName == userContentName ){
+            acc = cur.name;
+          };
+          return acc
+        }, '');
+
+        if( this.name == userName ){
+          this.activeUserContent = userContentName;
+          this.addActiveClassToUserContentByName( userContentName );
+          this.setActiveUserContent( userContentName );
+          this.setActiveUserName( this.name );
+        } else {
+          this.activeUserContent = 'Select';
         };
-        return acc
-      }, '');
-
-      if( this.name == userName ){
-        this.activeUserContent = userContentName;
-        this.addActiveClassToUserContentByName( userContentName );
-        this.setActiveUserContent( userContentName );
-        this.setActiveUserName( this.name );
-      } else {
-        this.activeUserContent = 'Select';
-      };
-      // this.setActiveUser( this.name );
+        // this.setActiveUser( this.name );
+      } catch (e) {
+        console.log( e );
+      }
     },
     getUserContent( contentName ){
       this.setActiveUserContent( contentName );
@@ -90,7 +93,7 @@ export default {
       });
     },
     getComponentNamesByUserName( users, userName ){
-      return users.reduce(( acc, cur ) => {
+      let componentNames = users.reduce(( acc, cur ) => {
         let componentNames = null;
         if( cur.name == userName ){
           componentNames = cur.componentNames;
@@ -99,10 +102,13 @@ export default {
 
         return acc;
       }, null);
+
+      return componentNames;
     }
   },
   created() {
-    this._initUserContents();
+    let paths = this.$route.path.split( '/' );
+    this._initUserContents( paths );
   }
 }
 </script>
