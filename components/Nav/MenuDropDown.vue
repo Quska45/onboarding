@@ -55,7 +55,6 @@ export default {
       setActiveUserName: 'users/setActiveUserName'
     }),
     async _initUserContents( paths ){
-      try {
         // let userContents = await this.$axios.$get( '/api/filePath/userContents' + '/' + this.name );      // userContents = users[ this.name ];
         let userContents = this.getComponentNamesByUserName( users, this.name );
         this.userContents = userContents;
@@ -78,9 +77,7 @@ export default {
           this.activeUserContent = 'Select';
         };
         // this.setActiveUser( this.name );
-      } catch (e) {
-        console.log( e );
-      }
+
     },
     getUserContent( contentName ){
       this.setActiveUserContent( contentName );
