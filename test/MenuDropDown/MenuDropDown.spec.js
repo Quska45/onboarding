@@ -2,7 +2,7 @@ import {mount, shallowMount} from '@vue/test-utils'
 import MenuDropDown from '@/components/Nav/MenuDropDown.vue'
 
 describe('MenuDropDown', () => {
-  test('MenuDropDown shallowMount ', () => {
+  test('MenuDropDownJs shallowMount ', () => {
     const mockRoute = {
       path: '/contents/testuser2/test2'
     };
@@ -19,7 +19,7 @@ describe('MenuDropDown', () => {
     expect(wrapper.vm).toBeTruthy()
   });
 
-  test('MenuDropDown mount with stubing ', () => {
+  test('MenuDropDownJs mount with stubing ', () => {
     const mockRoute = {
       path: '/contents/testuser2/test2'
     };
