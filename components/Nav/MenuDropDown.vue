@@ -24,7 +24,11 @@
 <script>
 import { mapMutations } from 'vuex';
 import MenuDropDownItem from "./MenuDropDownItem";
-import users from "../../pages/userContents.json";
+import User from './js/User.js';
+import UserManager from './js/UserManager.js';
+import userDatas from "../../pages/userContents.json";
+
+let userManager = UserManager.getUserManagerByUsers( userDatas );
 
 export default {
   name: "MenuDropDown",
@@ -54,15 +58,12 @@ export default {
       setActiveUser: 'users/setActiveUser',
       setActiveUserName: 'users/setActiveUserName'
     }),
-    async _initUserContents( paths ){
-      try {
-        // let userContents = await this.$axios.$get( '/api/filePath/userContents' + '/' + this.name );      // userContents = users[ this.name ];
-        let userContents = this.getComponentNamesByUserName( users, this.name );
-        this.userContents = userContents;
+    initUserContents( paths ){
+        this.userContents = userManager.getContentsByUserName( this.name );
 
         let userName = decodeURIComponent( paths[ 2 ] );
         let userContentName = decodeURIComponent( paths[ 3 ] );
-        userContentName = userContents.reduce(( acc, cur )=>{
+        userContentName = this.userContents.reduce(( acc, cur )=>{
           if( cur.componentName == userContentName ){
             acc = cur.name;
           };
@@ -77,10 +78,6 @@ export default {
         } else {
           this.activeUserContent = 'Select';
         };
-        // this.setActiveUser( this.name );
-      } catch (e) {
-        console.log( e );
-      }
     },
     getUserContent( contentName ){
       this.setActiveUserContent( contentName );
@@ -91,24 +88,11 @@ export default {
       this.userContents.forEach(( userContent )=>{
         userContent.name == name ? userContent.isActive = 'is-active' : userContent.isActive = '';
       });
-    },
-    getComponentNamesByUserName( users, userName ){
-      let componentNames = users.reduce(( acc, cur ) => {
-        let componentNames = null;
-        if( cur.name == userName ){
-          componentNames = cur.componentNames;
-          acc = componentNames;
-        };
-
-        return acc;
-      }, null);
-
-      return componentNames;
     }
   },
   created() {
     let paths = this.$route.path.split( '/' );
-    this._initUserContents( paths );
+    this.initUserContents( paths );
   }
 }
 </script>

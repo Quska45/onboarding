@@ -15,7 +15,12 @@
           </div>
         </div>
 
-        <MenuDropDown v-for="user in users" :key="user.name" :name="user.name" :isActive="user.isActive">
+        <MenuDropDown
+          v-for="user in users"
+          :key="user.name"
+          :name="user.name"
+          :isActive="user.isActive"
+        >
         </MenuDropDown>
 
       </b-sidebar>
@@ -40,14 +45,11 @@ export default {
     methods:{
       ...mapMutations({
         initUsers: 'users/initUsers',
-      }),
-      async _initUsers(){
-        this.$store.commit( 'users/initUsers', users )
-        this.users = this.$store.state.users.users;
-      }
+      })
     },
     created() {
-      this._initUsers();
+      this.$store.commit( 'users/initUsers', users )
+      this.users = this.$store.state.users.users;
     }
 }
 </script>
