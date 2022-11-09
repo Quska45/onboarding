@@ -24,11 +24,13 @@
 <script>
 import { mapMutations } from 'vuex';
 import MenuDropDownItem from "./MenuDropDownItem";
-import User from './js/User.js';
 import UserManager from './js/UserManager.js';
+import Content from "@/components/Nav/js/Content";
+import ContentManager from "@/components/Nav/js/ContentManager";
 import userDatas from "../../pages/userContents.json";
 
-let userManager = UserManager.getUserManagerByUsers( userDatas );
+// let userManager = UserManager.getUserManagerByUsers( userDatas );
+// let contentManager = null;
 
 export default {
   name: "MenuDropDown",
@@ -36,9 +38,15 @@ export default {
     MenuDropDownItem
   },
   data: function(){
+    const _this = this;
     return {
       userContents: [],
-      activeUserContent: ''
+      activeUserContent: '',
+      userManager: UserManager.getUserManagerByUsers( userDatas ),
+      contentManager: (function(){
+        const found = userDatas.find( cur =>cur.name == _this.name );
+        return ContentManager.getContentManagerByContents( found.componentNames )
+      })()
     }
   },
   props: {
@@ -55,30 +63,8 @@ export default {
     ...mapMutations({
       addActiveClassToUserByName: 'users/addActiveClassToUserByName',
       setActiveUserContent: 'userContents/setActiveUserContent',
-      setActiveUser: 'users/setActiveUser',
       setActiveUserName: 'users/setActiveUserName'
     }),
-    initUserContents( paths ){
-        this.userContents = userManager.getContentsByUserName( this.name );
-
-        let userName = decodeURIComponent( paths[ 2 ] );
-        let userContentName = decodeURIComponent( paths[ 3 ] );
-        userContentName = this.userContents.reduce(( acc, cur )=>{
-          if( cur.componentName == userContentName ){
-            acc = cur.name;
-          };
-          return acc
-        }, '');
-
-        if( this.name == userName ){
-          this.activeUserContent = userContentName;
-          this.addActiveClassToUserContentByName( userContentName );
-          this.setActiveUserContent( userContentName );
-          this.setActiveUserName( this.name );
-        } else {
-          this.activeUserContent = 'Select';
-        };
-    },
     getUserContent( contentName ){
       this.setActiveUserContent( contentName );
       this.activeUserContent = contentName;
@@ -91,8 +77,22 @@ export default {
     }
   },
   created() {
-    let paths = this.$route.path.split( '/' );
-    this.initUserContents( paths );
+    const paths = this.$route.path.split( '/' );
+    const userName = decodeURIComponent( paths[ 2 ] );
+    let contentName = decodeURIComponent( paths[ 3 ] );
+    const content = this.contentManager.getContentByComponentName( contentName );
+
+    contentName = content.name;
+    this.userContents = this.userManager.getContentsByUserName( this.name );
+
+    if( this.name == userName ){
+      this.activeUserContent = contentName;
+      this.addActiveClassToUserContentByName( contentName );
+      this.setActiveUserName( userName );
+      this.setActiveUserContent( contentName );
+    } else {
+      this.activeUserContent = 'Select';
+    };
   }
 }
 </script>

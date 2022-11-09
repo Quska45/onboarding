@@ -10,24 +10,8 @@ export default {
   name: "Header",
   data: function() {
     return {
-      user: this.$store.state.users.activeUser.name,
+      user: this.$store.state.users.activeUserName,
       userContent: this.$store.state.userContents.activeUserContent
-    }
-  },
-  computed: {
-    getUser(){
-      return this.$store.state.users.activeUserName;
-    },
-    getUserContent(){
-      return this.$store.state.userContents.activeUserContent;
-    }
-  },
-  watch: {
-    getUser( userName ){
-      this.user = userName;
-    },
-    getUserContent( userContentName ){
-      this.userContent = userContentName;
     }
   }
 }
