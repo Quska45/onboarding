@@ -1,19 +1,21 @@
 import User from './User.js'
-import userDatas from "@/pages/userContents.json";
 
 export default class UserManager {
+  /*
+  * users : [ User ]
+  * */
   constructor( users ) {
     this.users = users;
   };
 
   static getUserManagerByUsers( users ){
-    let _users = userDatas.reduce(( acc, cur )=>{
+    let _users = users.reduce(( acc, cur )=>{
       acc.push( new User( cur ) );
       return acc;
     }, []);
 
     return new UserManager( _users );
-  }
+  };
 
   addUser( user ){
     this.users.push( user );
