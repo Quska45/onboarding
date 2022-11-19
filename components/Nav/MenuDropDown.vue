@@ -83,7 +83,7 @@ export default {
     const content = this.contentManager.getContentByComponentName( contentName );
 
     contentName = content.name;
-    this.userContents = this.userManager.getContentsByUserName( this.name );
+    this.userContents = this.contentManager.contents;
 
     if( this.name == userName ){
       this.activeUserContent = contentName;
